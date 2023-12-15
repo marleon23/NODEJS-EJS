@@ -21,6 +21,10 @@ app.get('/register',(req, res) => {
     res.render('register')
 
 })
+app.get('/homepage',(req, res) => {
+    res.render('homepage')
+
+})
 //Listen on port 3000
 app.listen(PORT, () => {
     console.log(`The Server is running on PORT: ${PORT}`)
