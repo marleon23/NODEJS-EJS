@@ -33,42 +33,32 @@ db.serialize(() => {
   });
 });
 
-//Set Viees
+//Set Views
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-app.get('/login', (req, res) => {
-  res.render('login')
+//set routes
+const userRoute = require('./routes/User');
 
+//Home screen
+app.get('/', (req, res) => {
+  res.render('homepage')
 })
-
-
-app.post('/auth',(req,res)=>{
-  res.send(req.body)
-})
-
-app.get('/test', (req, res) => {
-  db.all('SELECT * FROM post_mock', (err, rows) => {
-    if (err) {
-      console.error(err.message);
-      res.status(500).send('Internal Server Error');
-      return;
-    }
-    // Process the results
-    res.send(rows);
-  });
-});
 
 app.get('/register', (req, res) => {
   res.render('register')
-
 })
-app.get('/', (req, res) => {
-  res.render('homepage')
 
+
+app.get('/login', (req, res) => {
+  res.render('login')
 })
+
+//////////////////////////////////////////////
+app.use("/auth",userRoute)
 
 //Listen on port 3000
 app.listen(PORT, () => {
   console.log(`The Server is running on PORT: ${PORT}`)
 })
+
