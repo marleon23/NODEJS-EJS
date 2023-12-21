@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS post_mock (
 CREATE TABLE IF NOT EXISTS users(
   user_name TEXT,
   hashed_password TEXT,
-  emails TEXT
+  email TEXT
 );
 INSERT INTO post_mock (user_name, contents, number_of_likes) VALUES ('gnisen0', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 1);
 
