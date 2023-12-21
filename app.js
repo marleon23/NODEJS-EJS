@@ -41,7 +41,7 @@ app.set('view engine', 'ejs')
 const userRoute = require('./routes/User');
 
 //Home screen
-app.get('/', (req, res) => {
+app.get('/homepage', (req, res) => {
   res.render('homepage')
 })
 
@@ -49,10 +49,25 @@ app.get('/register', (req, res) => {
   res.render('register')
 })
 
-
 app.get('/login', (req, res) => {
   res.render('login')
 })
+app.get('/timeline', (req, res) => {
+  res.render('timeline')
+})
+
+app.get('/notification', (req, res) => {
+  res.render('notification')
+})
+
+
+app.get('/search', (req, res) => {
+  res.render('search')
+})
+app.get('/settings', (req, res) => {
+  res.render('settings')
+})
+
 
 //////////////////////////////////////////////
 app.use("/auth",userRoute)

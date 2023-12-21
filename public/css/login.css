@@ -17,6 +17,11 @@ body {
     width: 300px;
     text-align: center;
 }
+.login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+}
 
 .login-container input {
     width: 100%;
