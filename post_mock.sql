@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS post_mock (
 );
 
 CREATE TABLE IF NOT EXISTS users(
+  user_uuid TEXT,
   user_name TEXT,
   hashed_password TEXT,
   email TEXT
