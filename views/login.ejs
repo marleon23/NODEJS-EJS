@@ -4,22 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
-<body>
-    <div class="login-container">
-        <h2>Login</h2>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <div class="login-container bg-white p-8 rounded shadow-md max-w-md w-full">
+        <h2 class="text-2xl font-bold mb-4 text-blue-500">Login</h2>
         <form action="/auth/sign-in" method="post">
-            <label for="user_name">Username:</label>
-            <input type="text" id="user_name" name="user_name" required>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <div class="mb-4">
+                <label for="user_name" class="block text-sm font-medium text-gray-600">Username:</label>
+                <input type="text" id="user_name" name="user_name" required
+                       class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-500">
+            </div>
 
-            <button type="submit">Login</button>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
+                <input type="password" id="password" name="password" required
+                       class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-500">
+            </div>
+
+            <button type="submit"
+                    class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-500">
+                Login
+            </button>
         </form>
 
-        <p>Don't have an account? <a href="/register">Create new account</a></p>
+        <p class="mt-4 text-gray-600">Don't have an account? <a href="/register" class="text-blue-500">Create new account</a></p>
     </div>
+
 </body>
 </html>

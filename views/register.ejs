@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-    <link rel="stylesheet" href="css/register.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
-<body>
-    <div class="login-container">
-        <h2>Register</h2>
-        <form action="/auth/sign-up" method="post">
+<body class="bg-f6f7eb flex items-center justify-center h-screen">
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+  <div class="login-container bg-white p-8 rounded shadow-md max-w-md w-full">
+    <h2 class="text-2xl font-bold mb-4 text-blue-500">Register</h2>
+    <form action="/auth/sign-up" method="post">
 
-            <label for="user_name">Username:</label>
-            <input type="text" id="user_name" name="user_name" required>
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-600">Email:</label>
+        <input type="email" id="email" name="email" required
+               class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-500">
+      </div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+      <div class="mb-4">
+        <label for="user_name" class="block text-sm font-medium text-gray-600">Username:</label>
+        <input type="text" id="user_name" name="user_name" required
+               class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-500">
+      </div>
 
-            <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a href="/login">Sign In</a></p>
-    </div>
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
+        <input type="password" id="password" name="password" required
+               class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-500">
+      </div>
+
+      <button type="submit"
+              class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-500">
+        Register
+      </button>
+    </form>
+    <p class="mt-4 text-gray-600">Already have an account? <a href="/login" class="text-blue-500">Sign In</a></p>
+  </div>
+
 </body>
 </html>

@@ -3,36 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/homepage.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <!-- Add your other stylesheets if needed -->
+  <style>
+    /* Add your custom styles here if necessary */
+  </style>
 </head>
-<body>
-  <div class="wrapper">
-    <!-- Existing content -->
-    <img src="/images/jologo.png" alt="Logo" class="logo">
-    <div class="button-container">
-      <a class="button"><img src="/images/home.png" alt="Button 1"></a>
-      <a class="button"><img src="/images/notif.png" alt="Button 2"></a>
-      <a class="button"><img src="/images/search.png" alt="Button 3"></a>
-      <a class="button"><img src="/images/opt.png" alt="Button 4"></a>
+<body class="bg-gray-100 font-sans">
+
+  <div class="wrapper flex flex-col items-center">
+    <img src="/images/jologo.png" alt="Logo" class="logo my-4">
+    <div class="button-container flex space-x-4">
+      <a href="#" class="button">&#127968;</a> <!-- 🏠 -->
+      <a href="#" class="button">&#128276;</a> <!-- 🔔 -->
+      <a href="#" class="button">&#128269;</a> <!-- 🔍 -->
+      <a href="#" class="button">&#9881;</a> <!-- ⚙️ -->
     </div>
-    <div class="post-container">
-      <div class="post-input-container">
-        <img src="/path/to/profile_picture.png" class="profile-icon">
-        <textarea id="postText" placeholder="Write a post..."></textarea>
-        <label for="imageInput" class="image-icon">
-          <img src="/images/image-icon.png">
+
+    <div class="post-container w-full max-w-md mt-8">
+      <div class="post-input-container flex items-start space-x-4">
+        <img src="/path/to/profile_picture.png" class="profile-icon w-12 h-12 rounded-full">
+        <textarea id="postText" placeholder="Write a post..." class="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"></textarea>
+        <label for="imageInput" class="image-icon cursor-pointer">
+          &#128247; <!-- 📸 -->
         </label>
-        <input type="file" id="imageInput">
+        <input type="file" id="imageInput" class="hidden">
       </div>
     </div>
+
+    <% posts.forEach(item => { %>
+      <div class="post-card my-4 p-4 bg-white rounded-md shadow-md w-full max-w-md">
+        <p class="text-lg font-bold">User Name: <%= item.user_name %></p>
+        <p class="text-gray-700">Contents: <%= item.contents %></p>
+        <p class="text-gray-700">
+          &#128154; <!-- 💖 -->
+          <span class="ml-2"><%= item.number_of_likes %></span>
+        </p>
+      </div>
+    <% }) %>
   </div>
-  <!-- <div class="timeline-box">
-    <div class="timeline-post">
-      <img src="/path/to/friend_profile_picture.png" class="user-icon">
-      <p>John Doe posted a new photo</p>
-      <img src="/path/to/timeline_image1.png" class="timeline-image">
-    </div>
-  </div> -->
+
 </body>
 </html>
