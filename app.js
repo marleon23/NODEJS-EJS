@@ -17,10 +17,12 @@ app.set('view engine', 'ejs')
 //set routes
 const userRoute = require('./routes/User');
 const viewsRoute = require('./routes/Views')
+const postRoute = require('./routes/Post');
 
 //Routers
 app.use("/auth",userRoute)
 app.use("/",viewsRoute)
+app.use("/",postRoute)
 
 //Listen on port 3000
 app.listen(PORT, () => {

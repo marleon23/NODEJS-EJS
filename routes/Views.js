@@ -3,31 +3,16 @@ const router = express.Router();
 
 //Home screen
 router.get("",(req,res) => {
-  res.render('login')
+  res.render('login',{error:""})
 })
 
 
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register',{error:""})
 })
 
 router.get('/login', (req, res) => {
-  res.render('login')
-})
-router.get('/timeline', (req, res) => {
-  res.render('timeline')
-})
-
-router.get('/notification', (req, res) => {
-  res.render('notification')
-})
-
-router.get('/search', (req, res) => {
-  res.render('search')
-})
-
-router.get('/settings', (req, res) => {
-  res.render('settings')
+  res.render('login',{error:""})
 })
 
 

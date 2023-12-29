@@ -3,45 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <!-- Add your other stylesheets if needed -->
-  <style>
-    /* Add your custom styles here if necessary */
-  </style>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="bg-gray-100 font-sans">
 
-  <div class="wrapper flex flex-col items-center">
-    <img src="/images/jologo.png" alt="Logo" class="logo my-4">
-    <div class="button-container flex space-x-4">
-      <a href="#" class="button">&#127968;</a> <!-- 🏠 -->
-      <a href="#" class="button">&#128276;</a> <!-- 🔔 -->
-      <a href="#" class="button">&#128269;</a> <!-- 🔍 -->
-      <a href="#" class="button">&#9881;</a> <!-- ⚙️ -->
-    </div>
+  <div class="wrapper flex flex-col items-center max-w-screen-lg mx-auto mt-8">
 
-    <div class="post-container w-full max-w-md mt-8">
-      <div class="post-input-container flex items-start space-x-4">
-        <img src="/path/to/profile_picture.png" class="profile-icon w-12 h-12 rounded-full">
-        <textarea id="postText" placeholder="Write a post..." class="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"></textarea>
-        <label for="imageInput" class="image-icon cursor-pointer">
-          &#128247; <!-- 📸 -->
-        </label>
-        <input type="file" id="imageInput" class="hidden">
+    <!-- Top Navigation Bar -->
+    <div class="flex items-center justify-between w-full mb-8">
+      <img src="/images/jologo.png" alt="Logo" class="logo w-16 h-16">
+      <div class="flex items-center space-x-4">
+        <a href="#" class="button text-2xl">&#127968;</a> <!-- Home -->
+        <a href="#" class="button text-2xl">&#128276;</a> <!-- Notifications -->
+        <a href="#" class="button text-2xl">&#128269;</a> <!-- Search -->
+        <a href="#" class="button text-2xl">&#9881;</a> <!-- Settings -->
       </div>
     </div>
 
-    <% posts.forEach(item => { %>
-      <div class="post-card my-4 p-4 bg-white rounded-md shadow-md w-full max-w-md">
-        <p class="text-lg font-bold">User Name: <%= item.user_name %></p>
-        <p class="text-gray-700">Contents: <%= item.contents %></p>
-        <p class="text-gray-700">
-          &#128154; <!-- 💖 -->
-          <span class="ml-2"><%= item.number_of_likes %></span>
-        </p>
+    <!-- Search Bar -->
+    <form action="/search" method="post">
+      <div class="w-full max-w-md mb-4">
+        <div class="flex items-center">
+          <input type="text" name="query" placeholder="Search" class="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500">
+          <button type="submit" class="ml-2 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-500">
+            Search
+          </button>
+        </div>
       </div>
-    <% }) %>
+    </form>
+    
+
+    <!-- Create Post Section -->
+    <div class="post-container w-full max-w-md bg-white rounded-md shadow-md p-6 mb-8">
+      <form action="/create_post" method="post">
+        <div class="flex items-start space-x-4">
+          <img src="/images/profile_pic.jpg" alt="dp" class="profile-icon w-12 h-12 rounded-full">
+          <textarea id="postText" name="postText" placeholder="What's on your mind?" class="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"></textarea>
+        </div>
+        <div class="mt-4 flex items-center space-x-4">
+          <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-500">
+            Post
+          </button>
+        </div>
+      </form>
+    </div>
+    
+
+<!-- Display Posts -->
+<% let counter = 0; %>
+<% posts.forEach(item => { %>
+  <div class="post-card my-4 p-4 bg-white rounded-md shadow-md w-full max-w-md">
+    <div class="flex items-start space-x-4">
+      <img src="/images/profile_pic.jpg" alt="dp" class="profile-icon w-9 h-9 rounded-full">
+      <div>
+        <p class="text-lg font-bold"><%= item.user_name %></p>
+        <p class="text-gray-500">Posted on <%= item.posted_date %></p>
+      </div>
+    </div>
+    <p class="mt-2 text-gray-700">
+      <%= item.contents %>
+    </p>
+    <div class="mt-4 flex items-center space-x-4">
+      <button class="text-blue-500 hover:underline" onclick="likePost('<%= counter %>')">
+        Like
+      </button>
+      <span class="text-gray-450" id="likesCount<%= counter %>"><%= item.number_of_likes %></span>
+      <span class="text-gray-500">·</span>
+      <button class="text-gray-500 hover:underline">
+        Comment
+      </button>
+      <span class="text-gray-500">·</span>
+      <button class="text-gray-500 hover:underline">
+        Share
+      </button>
+    </div>
   </div>
+  <% counter++; %>
+<% }) %>
 
+  <script>
+    let alreadyLikedPostId = []
+    function likePost(postId) {
+      // Simulate an asynchronous request to the server to increment likes
+      // Replace this with an actual AJAX request
+      const likesCountElement = document.getElementById(`likesCount${postId}`);
+      if (alreadyLikedPostId.includes(postId)) {
+        return;
+      }
+      const currentLikes = parseInt(likesCountElement.innerText, 10);
+      likesCountElement.innerText = currentLikes + 1;
+      alreadyLikedPostId.push(postId);
+    }
+  </script>
 </body>
 </html>
