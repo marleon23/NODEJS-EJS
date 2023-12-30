@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const User = require('./currentUser');
+const comments = require('./Comments')
 
 const db = require('../db')
 
@@ -51,7 +52,7 @@ router.post('/sign-in', async (req, res) => {
         } else if (result) {
           User.setUserName(user_name);
           getPosts().then((posts) =>{
-            res.render('homepage',{posts:posts,error:""})
+            res.render('homepage',{posts:posts,error:"",comments:comments.getComments()})
           })
           console.log('Authentication successful');
         } else {

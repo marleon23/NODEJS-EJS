@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const user = require('./currentUser');
-const { get } = require('jquery');
+const comments = require('./Comments')
 
 router.post('/create_post', (req, res) => {
     const postText  = req.body.postText;
@@ -14,7 +14,7 @@ router.post('/create_post', (req, res) => {
             return res.status(500).send('Internal Server Error');
         }else{
             getPosts().then((posts) =>{
-                res.render('homepage',{posts:posts,error:""})
+                res.render('homepage',{posts:posts,error:"",comments:comments.getComments()})
               })
         }
     })
@@ -27,7 +27,7 @@ router.post('/search', (req, res) => {
         const filteredPosts = posts.filter((post) =>{
             return post.contents.includes(searchQuery)
         })
-        res.render('homepage',{posts:filteredPosts,error:""})
+        res.render('homepage',{posts:filteredPosts,error:"",comments:comments.getComments()})
     })
 });
 

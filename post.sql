@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS post_mock (
+    user_uuid TEXT,
     user_name VARCHAR(50),
     contents TEXT,
     number_of_likes INT

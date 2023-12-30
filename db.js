@@ -6,7 +6,7 @@ const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database(':memory:');
 
 // Read and execute the SQL file
-const sqlFilePath = 'post_mock.sql';
+const sqlFilePath = 'post.sql';
 const sql = fs.readFileSync(sqlFilePath, 'utf8');
 
 db.serialize(() => {
