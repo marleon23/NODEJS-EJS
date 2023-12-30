@@ -26,6 +26,10 @@ app.use("/",viewsRoute)
 app.use("/",postRoute)
 app.use("/",addComment)
 
+app.use((req,res) =>{
+  res.status(404).render('404')
+})
+
 //Listen on port 3000
 app.listen(PORT, () => {
   console.log(`The Server is running on PORT: ${PORT}`)

@@ -9,16 +9,53 @@
 
   <div class="wrapper flex flex-col items-center max-w-screen-lg mx-auto mt-8">
 
-    <!-- Top Navigation Bar -->
-    <div class="flex items-center justify-between w-full mb-8">
-      <img src="/images/jologo.png" alt="Logo" class="logo w-16 h-16">
-      <div class="flex items-center space-x-4">
-        <a href="#" class="button text-2xl">&#127968;</a> <!-- Home -->
-        <a href="#" class="button text-2xl">&#128276;</a> <!-- Notifications -->
-        <a href="#" class="button text-2xl">&#128269;</a> <!-- Search -->
-        <a href="#" class="button text-2xl">&#9881;</a> <!-- Settings -->
+<!-- Top Navigation Bar -->
+<div class="flex items-center justify-between w-full mb-8">
+  <img src="/images/jologo.png" alt="Logo" class="logo w-16 h-16">
+  <div class="flex items-center space-x-4 relative">
+    <div class="flex items-center space-x-1 text-sm">
+      <a href="#" class="button text-2xl">&#127968;</a> <!-- Home -->
+      <span>Home</span>
+    </div>
+    <div class="flex items-center space-x-1 text-sm notification-bell-container relative">
+      <a href="#" class="button text-2xl" id="notificationBell">&#128276;</a> <!-- Notifications -->
+      <span>Notifications</span>
+      <div class="notification-dropdown hidden absolute bg-white rounded-md shadow-md p-4 mt-2 right-0">
+        <!-- Realistic notification content -->
+        <div class="notification-item">
+          <img src="/images/profile_pic.jpg" alt="Profile" class="profile-icon w-9 h-9 rounded-full">
+          <span class="text-blue-500">John Doe</span> liked your post.
+        </div>
+        <div class="notification-item">
+          <img src="/images/profile_pic.jpg" alt="Profile" class="profile-icon w-9 h-9 rounded-full">
+          <span class="text-blue-500">Jane Smith</span> commented on your photo.
+        </div>
+        <div class="notification-item">
+          <img src="/images/profile_pic.jpg" alt="Profile" class="profile-icon w-9 h-9 rounded-full">
+          You have a new friend request from <span class="text-blue-500">Alex Johnson</span>.
+        </div>
+        <div class="notification-item">
+          <img src="/images/profile_pic.jpg" alt="Profile" class="profile-icon w-9 h-9 rounded-full">
+          <span class="text-blue-500">Emily Brown</span> mentioned you in a comment.
+        </div>
+        <div class="notification-item">
+          <img src="/images/profile_pic.jpg" alt="Profile" class="profile-icon w-9 h-9 rounded-full">
+          Your post has been shared by <span class="text-blue-500">Chris Miller</span>.
+        </div>
       </div>
     </div>
+    <div class="flex items-center space-x-1 text-sm">
+      <a href="#" class="button text-2xl">&#128269;</a> <!-- Search -->
+      <span>Search</span>
+    </div>
+    <div class="flex items-center space-x-1 text-sm">
+      <a href="#" class="button text-2xl">&#9881;</a> <!-- Settings -->
+      <span>Settings</span>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- Search Bar -->
     <form action="/search" method="post">
@@ -135,6 +172,15 @@
       likesCountElement.innerText = currentLikes + 1;
       alreadyLikedPostId.push(postId);
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const notificationBell = document.getElementById('notificationBell');
+    const notificationDropdown = document.querySelector('.notification-dropdown');
+
+    notificationBell.addEventListener('click', function () {
+      notificationDropdown.classList.toggle('hidden');
+    });
+  });
   </script>
 </body>
 </html>
